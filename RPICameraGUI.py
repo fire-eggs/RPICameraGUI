@@ -7,6 +7,8 @@
 
 
 import os
+import wxversion
+wxversion.select('2.8')
 import wx
 import subprocess  # needed to run external program raspistill 
 from wx.lib.pubsub import Publisher
@@ -118,7 +120,7 @@ class ViewerPanel(wx.Panel):
     def TakePic(self, event):
         global defaultfilename
         # pick up all the settings selected and add to command line to be usd to take a picture
-        self.cmdln='raspistill '
+        self.cmdln='raspistill -n '
         if self.cbw.GetValue() :
             self.cmdln=self.cmdln + '-w ' + str(self.scw.GetValue()) +' '
         if self.cbh.GetValue() :
